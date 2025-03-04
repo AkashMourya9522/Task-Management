@@ -1,7 +1,9 @@
 import express from 'express'
-import auth from './routes/auth.js'
+import auth from './routes/auth.route.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import listing from './routes/task.route.js'
+import cookieParser from 'cookie-parser'
 
 const app = express()
 dotenv.config()
@@ -19,8 +21,10 @@ mongoose.connect(process.env.MONGO_URL)
 })
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.use("/api/auth",auth)
+app.use("/api/task",listing)
 
 app.get("/test",(req,res)=>{
     res.json({
