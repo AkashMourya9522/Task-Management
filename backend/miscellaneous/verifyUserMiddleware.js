@@ -8,7 +8,7 @@ export default function verifyUser (req,res,next){
             success:false
         })
     }else{
-        const decoded = jwt.decode(cookie.access_token,process.env.JWT_SECRET)
+        const decoded = jwt.decode(token,process.env.JWT_SECRET)
         req.userId = decoded.id;
         next()
     }
