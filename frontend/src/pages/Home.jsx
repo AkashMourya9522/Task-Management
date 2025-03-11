@@ -1,7 +1,42 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import Task from "../components/Task";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const [task, setTask] = useState([]);
+  const navigate = useNavigate()
+  console.log(task);
+  
+  async function getData() {
+    try {
+      const dbRes = await axios.get("/api/task/getTasks", {
+        withCredentials: true,
+      });
+      setTask(dbRes.data);
+    } catch (error) {
+      toast.error(error);
+    }
+  }
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function handleClick(id){
+    navigate('/task/'+id)
+    
+  }
+
+
   return (
-    <div>Home</div>
-  )
+    <div className="flex flex-col gap-10 bg-blue-400">
+      <h1 className="text-3xl font-semibold text-center">All Your Tasks</h1>
+      <div className="flex flex-wrap gap-6 bg-orange-200 justify-center p-5" >
+        {task.map((t, i) => (
+          <Task onClick={()=>handleClick(t._id)} key={t._id} data={t} />
+        ))}
+      </div>
+    </div>
+  );
 }

@@ -88,10 +88,7 @@ export const getTasks = async (req, res) => {
   const userId = req.userId;
   try {
     const tasks = await Task.find({ userRef: userId });
-    return res.status(200).json({
-      data: tasks,
-      success: true,
-    });
+    return res.status(200).json(tasks);
   } catch (error) {
     return res.status(404).json({
       msg: error,
@@ -116,11 +113,7 @@ export const getTask = async (req, res) => {
         success: false,
       });
     } else {
-      return res.status(200).json({
-        msg: "Success",
-        success: true,
-        data: task,
-      });
+      return res.status(200).json(task);
     }
   } catch (error) {}
 };
