@@ -37,14 +37,14 @@ export default function CreateTask() {
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           value={title}
-          className="p-3 bg-slate-200 rounded-lg outline-none"
+          className="p-3 bg-slate-200 rounded-lg outline-none border-2 border-slate-300"
           placeholder="Title For Your Task"
         />
         <p className="text-xl font-semibold">Description</p>
         <textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          className="p-3 bg-slate-200 rounded-lg outline-none"
+          className="p-3 bg-slate-200 rounded-lg outline-none border-2 border-slate-300"
           placeholder="Description For You Task"
         ></textarea>
         <button className="p-3 bg-green-400 rounded-lg uppercase font-semibold">

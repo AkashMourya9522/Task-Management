@@ -7,7 +7,7 @@ export default function EditTask() {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   async function getTaskData() {
     const dbRes = await axios.get("/api/task/getTask/" + id, {
       withCredentials: true,
@@ -33,7 +33,7 @@ export default function EditTask() {
       );
       if (dbRes.data.success) {
         toast.success("Task Updated Successfully");
-        navigate('/home')
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +58,7 @@ export default function EditTask() {
         <textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          className="p-3 bg-slate-200 rounded-lg outline-none font-semibold"
+          className="p-3 bg-slate-200 rounded-lg outline-none font-semibold border-2 border-slate-300"
         ></textarea>
         <button className="p-3 bg-green-400 rounded-lg">Submit Changes</button>
       </form>

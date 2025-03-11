@@ -30,7 +30,7 @@ export default function Signin() {
   }
 
   return (
-    <div className="bg-slate-200 p-5 flex items-center justify-center h-screen">
+    <div className="bg-slate-200 p-5 flex items-center justify-center ">
       <div className="sm:max-w-lg  w-full">
         <h1 className="text-3xl font-bold text-center uppercase">Sign In</h1>
         <form
@@ -39,7 +39,7 @@ export default function Signin() {
         >
           <p className="font-semibold text-lg">Email</p>
           <input
-            className="p-3 outline-none bg-white rounded-lg font-semibold"
+            className="p-3 outline-none bg-white rounded-lg font-semibold border-2 border-slate-300"
             placeholder="Enter Email"
             type="email"
             name="email"
@@ -49,7 +49,7 @@ export default function Signin() {
           />
           <p className="font-semibold text-lg">Password</p>
           <input
-            className="p-3 outline-none bg-white rounded-lg font-semibold"
+            className="p-3 outline-none bg-white rounded-lg font-semibold border-2 border-slate-300"
             placeholder="Enter Password"
             type="password"
             name="password"

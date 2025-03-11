@@ -30,7 +30,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="bg-slate-200 p-5 flex items-center justify-center h-screen">
+    <div className="bg-slate-200 p-5 flex items-center justify-center">
       <div className="sm:max-w-lg  w-full">
         <h1 className="text-3xl font-bold text-center uppercase my-5">
           Sign Up
@@ -41,7 +41,7 @@ export default function Signup() {
         >
           <p className="font-semibold text-lg">Username</p>
           <input
-            className="p-3 outline-none bg-white rounded-lg font-semibold"
+            className="p-3 outline-none bg-white rounded-lg font-semibold border-2 border-slate-300"
             placeholder="Enter Username"
             type="text"
             onChange={(e) => setUsername(e.target.value)}
@@ -49,7 +49,7 @@ export default function Signup() {
           />
           <p className="font-semibold text-lg">Email</p>
           <input
-            className="p-3 outline-none bg-white rounded-lg font-semibold"
+            className="p-3 outline-none bg-white rounded-lg font-semibold border-2 border-slate-300"
             placeholder="Enter Email"
             type="email"
             name="email"
@@ -59,7 +59,7 @@ export default function Signup() {
           />
           <p className="font-semibold text-lg">Password</p>
           <input
-            className="p-3 outline-none bg-white rounded-lg font-semibold"
+            className="p-3 outline-none bg-white rounded-lg font-semibold border-2 border-slate-300"
             placeholder="Enter Password"
             type="password"
             name="password"

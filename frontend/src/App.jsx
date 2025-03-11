@@ -5,10 +5,12 @@ import Signup from "./pages/Signup.jsx";
 import EditTask from "./pages/EditTask.jsx";
 import Protected from "./pages/Protected.jsx";
 import CreateTask from "./pages/CreateTask.jsx";
+import Header from "./components/Header.jsx";
 
 function App() {
   return (
     <BrowserRouter>
+    <Header/>
       <Routes>
         {/* <Route element={<Protected />}> */}
           <Route path="/home" element={<Home />} />
