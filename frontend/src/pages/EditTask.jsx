@@ -41,21 +41,24 @@ export default function EditTask() {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col items-center justify-center gap-10 h-screen p-5 bg-slate-200">
+      <h1 className="text-3xl font-semibold">Edit Task</h1>
       <form
         onSubmit={handleOnSubmit}
         className="flex flex-col gap-5 bg-slate-300 p-5 mx-auto w-full sm:max-w-lg rounded-lg"
       >
+        <p className="text-xl font-bold">Title</p>
         <input
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           value={title}
-          className="p-3 bg-slate-200 rounded-lg outline-none"
+          className="p-3 bg-slate-200 rounded-lg outline-none font-semibold"
         />
+        <p className="text-xl font-bold">Description</p>
         <textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          className="p-3 bg-slate-200 rounded-lg outline-none"
+          className="p-3 bg-slate-200 rounded-lg outline-none font-semibold"
         ></textarea>
         <button className="p-3 bg-green-400 rounded-lg">Submit Changes</button>
       </form>
