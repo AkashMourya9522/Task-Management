@@ -1,10 +1,10 @@
 import Task from "../models/task.model.js";
 
 export const createTask = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, priority } = req.body;
   const userId = req.userId;
   try {
-    const newTask = new Task({ title, description, userRef: userId });
+    const newTask = new Task({ title, description, priority, userRef: userId });
     const dbRes = await newTask.save();
     res.status(200).json(dbRes);
   } catch (error) {
@@ -63,10 +63,10 @@ export const updateTask = async (req, res) => {
     } else {
       const userId = task.userRef;
       if (userId == req.userId) {
-        const { title, description, completed } = req.body;
+        const { title, description, completed, priority } = req.body;
         const dbRes = await Task.findByIdAndUpdate(
           taskId,
-          { title, description, completed },
+          { title, description, completed, priority },
           { new: true }
         );
         return res.status(200).json({
@@ -87,7 +87,7 @@ export const updateTask = async (req, res) => {
 export const getTasks = async (req, res) => {
   const userId = req.userId;
   try {
-    const tasks = await Task.find({ userRef: userId });
+    const tasks = await Task.find({ userRef: userId }).sort({priority:-1});
     return res.status(200).json(tasks);
   } catch (error) {
     return res.status(404).json({

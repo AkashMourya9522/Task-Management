@@ -7,9 +7,9 @@ export default function EditTask() {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [completed, setCompleted] = useState(false)
+  const [completed, setCompleted] = useState(false);
+  const [priority, setPriority] = useState(false);
 
-  
   const navigate = useNavigate();
   async function getTaskData() {
     const dbRes = await axios.get("/api/task/getTask/" + id, {
@@ -19,7 +19,8 @@ export default function EditTask() {
 
     setTitle(dbRes.data.title);
     setDescription(dbRes.data.description);
-    setCompleted(dbRes.data.completed)
+    setCompleted(dbRes.data.completed);
+    setPriority(dbRes.data.priority);
   }
   useEffect(() => {
     getTaskData();
@@ -30,7 +31,7 @@ export default function EditTask() {
     try {
       const dbRes = await axios.put(
         `/api/task/update/${id}`,
-        { title, description,completed },
+        { title, description, completed, priority },
         {
           withCredentials: true,
         }
@@ -44,22 +45,22 @@ export default function EditTask() {
     }
   }
 
-  async function handleDeleteTask(){
+  async function handleDeleteTask() {
     try {
-      const dbRes = await axios.delete('/api/task/delete/'+id)
-      if(dbRes.data.success == true){
-        toast.success(dbRes.data.msg)
-        navigate('/home')
+      const dbRes = await axios.delete("/api/task/delete/" + id);
+      if (dbRes.data.success == true) {
+        toast.success(dbRes.data.msg);
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
-      
-      toast.error(error)
+
+      toast.error(error);
     }
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-10 h-screen p-5 bg-slate-200">
+    <div className="flex flex-col items-center justify-center gap-10 p-5 bg-slate-200">
       <h1 className="text-3xl font-semibold">Edit Task</h1>
       <form
         onSubmit={handleOnSubmit}
@@ -78,12 +79,32 @@ export default function EditTask() {
           value={description}
           className="p-3 bg-slate-200 rounded-lg outline-none font-semibold border-2 border-slate-300"
         ></textarea>
-        <div className="flex  gap-2 items-center" >
-          <input checked={completed} onChange={()=>setCompleted((prev)=>!prev)} type="checkbox" className="w-4 h-4" />
+        <div className="flex  gap-2 items-center">
+          <input
+            checked={completed}
+            onChange={() => setCompleted((prev) => !prev)}
+            type="checkbox"
+            className="w-4 h-4"
+          />
           <p className="text-md font-bold">Mark As Completed</p>
         </div>
+        <div className="flex  gap-2 items-center">
+          <input
+            checked={priority}
+            onChange={() => setPriority((prev) => !prev)}
+            type="checkbox"
+            className="w-4 h-4"
+          />
+          <p className="text-md font-bold">Mark As Priority</p>
+        </div>
         <button className="p-3 bg-green-400 rounded-lg">Submit Changes</button>
-        <button onClick={handleDeleteTask} type="button" className="p-3 bg-red-400 rounded-lg">Delete Task</button>
+        <button
+          onClick={handleDeleteTask}
+          type="button"
+          className="p-3 bg-red-400 rounded-lg"
+        >
+          Delete Task
+        </button>
       </form>
     </div>
   );

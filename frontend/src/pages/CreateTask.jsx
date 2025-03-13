@@ -6,14 +6,16 @@ import { toast } from "react-toastify";
 export default function CreateTask() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState(false);
   const navigate = useNavigate();
+console.log(priority);
 
   async function handleOnSubmit(e) {
     e.preventDefault();
     try {
       const dbRes = await axios.post(
         `/api/task/create`,
-        { title, description },
+        { title, description,priority },
         {
           withCredentials: true,
         }
@@ -21,7 +23,7 @@ export default function CreateTask() {
       toast.success("Task Created Successfully");
       navigate("/home");
     } catch (error) {
-        toast.error(error.response.data.messsage)
+      toast.error(error.response.data.messsage);
       console.log(error.response.data.messsage);
     }
   }
@@ -47,6 +49,15 @@ export default function CreateTask() {
           className="p-3 bg-slate-200 rounded-lg outline-none border-2 border-slate-300"
           placeholder="Description For You Task"
         ></textarea>
+        <div className="flex gap-2 items-center ">
+          <input
+            checked={priority}
+            type="checkbox"
+            onChange={() => setPriority((prev) => !prev)}
+            className="w-4 h-4"
+          />
+          <p>Mark As Important</p>
+        </div>
         <button className="p-3 bg-green-400 rounded-lg uppercase font-semibold">
           Create Task
         </button>

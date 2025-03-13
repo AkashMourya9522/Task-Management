@@ -13,6 +13,10 @@ const taskSchema = mongoose.Schema({
         default:false,
         type:Boolean
     },
+    priority:{
+        type:Boolean,
+        default:false
+    },
     userRef:{
         type:String,
         required:true

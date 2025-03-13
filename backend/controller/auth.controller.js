@@ -26,7 +26,7 @@ export const signin = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     console.log(user);
-    
+
     if (user) {
       const comparePassword = bcryptjs.compareSync(password, user.password);
       if (comparePassword) {
@@ -51,5 +51,19 @@ export const signin = async (req, res) => {
       success: false,
       message: error,
     });
+  }
+};
+
+export const signout = async (req, res) => {
+  try {
+    res.clearCookie("access_token");
+    res.status(200).json({
+      success:true,
+      msg:"User Logged Out Successfully"
+    })
+  } catch (error) {
+    res.status(404).json({
+      msg:"Error"+error
+    })
   }
 };
