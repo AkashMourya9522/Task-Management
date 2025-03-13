@@ -7,6 +7,9 @@ export default function EditTask() {
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [completed, setCompleted] = useState(false)
+
+  
   const navigate = useNavigate();
   async function getTaskData() {
     const dbRes = await axios.get("/api/task/getTask/" + id, {
@@ -16,6 +19,7 @@ export default function EditTask() {
 
     setTitle(dbRes.data.title);
     setDescription(dbRes.data.description);
+    setCompleted(dbRes.data.completed)
   }
   useEffect(() => {
     getTaskData();
@@ -26,7 +30,7 @@ export default function EditTask() {
     try {
       const dbRes = await axios.put(
         `/api/task/update/${id}`,
-        { title, description },
+        { title, description,completed },
         {
           withCredentials: true,
         }
@@ -37,6 +41,20 @@ export default function EditTask() {
       }
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function handleDeleteTask(){
+    try {
+      const dbRes = await axios.delete('/api/task/delete/'+id)
+      if(dbRes.data.success == true){
+        toast.success(dbRes.data.msg)
+        navigate('/home')
+      }
+    } catch (error) {
+      console.log(error);
+      
+      toast.error(error)
     }
   }
 
@@ -60,7 +78,12 @@ export default function EditTask() {
           value={description}
           className="p-3 bg-slate-200 rounded-lg outline-none font-semibold border-2 border-slate-300"
         ></textarea>
+        <div className="flex  gap-2 items-center" >
+          <input checked={completed} onChange={()=>setCompleted((prev)=>!prev)} type="checkbox" className="w-4 h-4" />
+          <p className="text-md font-bold">Mark As Completed</p>
+        </div>
         <button className="p-3 bg-green-400 rounded-lg">Submit Changes</button>
+        <button onClick={handleDeleteTask} type="button" className="p-3 bg-red-400 rounded-lg">Delete Task</button>
       </form>
     </div>
   );

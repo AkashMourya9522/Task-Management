@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Task from "../components/Task";
 import { useNavigate } from "react-router-dom";
 
-export default function Home() {
+export default function CompletedTask() {
   const [task, setTask] = useState([]);
   const navigate = useNavigate();
   console.log(task);
@@ -29,11 +29,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-5 bg-blue-400 p-3">
-      <h1 className="text-3xl font-semibold text-center p-3">All Your Tasks</h1>
+      <h1 className="text-3xl font-semibold text-center p-3">All Your Completed Tasks</h1>
       <div className="flex flex-wrap gap-6 justify-center p-3">
         {task.map(
           (t, i) =>
-            t.completed == false && (
+            t.completed == true && (
               <Task onClick={() => handleClick(t._id)} key={t._id} data={t} />
             )
         )}

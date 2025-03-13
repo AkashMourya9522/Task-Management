@@ -6,6 +6,7 @@ import EditTask from "./pages/EditTask.jsx";
 import Protected from "./pages/Protected.jsx";
 import CreateTask from "./pages/CreateTask.jsx";
 import Header from "./components/Header.jsx";
+import CompletedTask from "./pages/CompletedTask.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         {/* <Route element={<Protected />}> */}
           <Route path="/home" element={<Home />} />
           <Route path="/task/:id" element={<EditTask />} />
+          <Route path="/completed-task" element={<CompletedTask />} />
         {/* </Route> */}
 
         <Route path="/sign-in" element={<Signin />} />

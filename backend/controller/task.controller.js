@@ -63,10 +63,10 @@ export const updateTask = async (req, res) => {
     } else {
       const userId = task.userRef;
       if (userId == req.userId) {
-        const { title, description } = req.body;
+        const { title, description, completed } = req.body;
         const dbRes = await Task.findByIdAndUpdate(
           taskId,
-          { title, description },
+          { title, description, completed },
           { new: true }
         );
         return res.status(200).json({
