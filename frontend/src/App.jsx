@@ -13,11 +13,11 @@ function App() {
     <BrowserRouter>
     <Header/>
       <Routes>
-        {/* <Route element={<Protected />}> */}
+        <Route element={<Protected />}>
           <Route path="/home" element={<Home />} />
           <Route path="/task/:id" element={<EditTask />} />
           <Route path="/completed-task" element={<CompletedTask />} />
-        {/* </Route> */}
+        </Route>
 
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />

@@ -29,7 +29,8 @@ console.log(priority);
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col items-center gap-10 p-5 justify-evenly bg-stone-200">
+      <h1 className="text-3xl font-bold uppercase">Create A Task</h1>
       <form
         onSubmit={handleOnSubmit}
         className="flex flex-col gap-5 bg-slate-300 p-5 mx-auto w-full sm:max-w-lg rounded-lg"

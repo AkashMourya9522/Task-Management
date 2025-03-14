@@ -11,8 +11,6 @@ export default function Signin() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-  console.log(user);
 
   async function handleFormSubmit(e) {
     e.preventDefault();
