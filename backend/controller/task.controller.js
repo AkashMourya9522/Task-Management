@@ -86,10 +86,22 @@ export const updateTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
   const userId = req.userId;
+  let filter = (req.query.filter) || 'priority';
+  let order = (req.query.order) || true;
+  
+  console.log(filter,order);
+  if(filter=='priority'){
+    order = -1;
+  }
+  
   try {
-    const tasks = await Task.find({ userRef: userId }).sort({priority:-1});
+    const tasks = await Task.find({ userRef: userId }).sort({[filter]:order}) ;
+    console.log(tasks);
+    
     return res.status(200).json(tasks);
   } catch (error) {
+    console.log(error);
+    
     return res.status(404).json({
       msg: error,
       success: false,
