@@ -1,10 +1,11 @@
 import express from 'express'
-import auth from './routes/auth.route.js'
+import authRoute from './routes/auth.route.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import listing from './routes/task.route.js'
+import listingRoute from './routes/task.route.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import userRoute from './routes/user.route.js'
 
 const app = express()
 dotenv.config()
@@ -28,8 +29,9 @@ app.use(cors({
 app.use(express.json())
 app.use(cookieParser())
 
-app.use("/api/auth",auth)
-app.use("/api/task",listing)
+app.use("/api/auth",authRoute)
+app.use("/api/task",listingRoute)
+app.use("/api/user",userRoute)
 
 app.get("/test",(req,res)=>{
     res.json({

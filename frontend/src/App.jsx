@@ -7,6 +7,7 @@ import Protected from "./pages/Protected.jsx";
 import CreateTask from "./pages/CreateTask.jsx";
 import Header from "./components/Header.jsx";
 import CompletedTask from "./pages/CompletedTask.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/task/:id" element={<EditTask />} />
           <Route path="/completed-task" element={<CompletedTask />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
 
         <Route path="/sign-in" element={<Signin />} />
