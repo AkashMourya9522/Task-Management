@@ -13,10 +13,13 @@ export const userSlice = createSlice({
         },
         signOut:(state)=>{
             state.user = null
+        },
+        updateUser:(state,action)=>{
+            state.user = action.payload
         }
     }
 })
 
-export const { signIn,signOut } = userSlice.actions
+export const { signIn,signOut, updateUser } = userSlice.actions
 
 export default userSlice.reducer

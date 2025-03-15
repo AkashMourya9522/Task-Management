@@ -37,7 +37,8 @@ export const updateUser = async (req,res)=>{
     }
     try {
         const dbRes = await User.findByIdAndUpdate(req.userId,{$set:updatedData},{new:true})
-        return res.status(202).json(dbRes)
+        const {password:password,...rest} = dbRes._doc
+        return res.status(202).json(rest)
     } catch (error) {
         console.log(error.msg);
         
