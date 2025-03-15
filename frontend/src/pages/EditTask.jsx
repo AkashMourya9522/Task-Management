@@ -60,24 +60,24 @@ export default function EditTask() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-10 p-5 bg-slate-200">
-      <h1 className="text-3xl font-semibold">Edit Task</h1>
+    <div className="flex flex-col items-center justify-evenly p-5 bg-stone-200 h-screen">
+      <h1 className="text-4xl font-bold uppercase">Edit Task</h1>
       <form
         onSubmit={handleOnSubmit}
-        className="flex flex-col gap-5 bg-slate-300 p-5 mx-auto w-full sm:max-w-lg rounded-lg"
+        className="flex flex-col gap-5 bg-white p-5 mx-auto w-full sm:max-w-lg rounded-lg"
       >
         <p className="text-xl font-bold">Title</p>
         <input
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           value={title}
-          className="p-3 bg-slate-200 rounded-lg outline-none font-semibold"
+          className="p-3 bg-white rounded-lg outline-none font-semibold border-2 border-slate-300"
         />
         <p className="text-xl font-bold">Description</p>
         <textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          className="p-3 bg-slate-200 rounded-lg outline-none font-semibold border-2 border-slate-300"
+          className="p-3 bg-white rounded-lg outline-none font-semibold border-2 border-slate-300"
         ></textarea>
         <div className="flex  gap-2 items-center">
           <input
@@ -97,11 +97,11 @@ export default function EditTask() {
           />
           <p className="text-md font-bold">Mark As Priority</p>
         </div>
-        <button className="p-3 bg-green-400 rounded-lg">Submit Changes</button>
+        <button className="p-3 bg-green-400 rounded-lg uppercase text-white font-semibold hover:cursor-pointer hover:opacity-95">Submit Changes</button>
         <button
           onClick={handleDeleteTask}
           type="button"
-          className="p-3 bg-red-400 rounded-lg"
+          className="p-3 bg-red-400 rounded-lg text-white uppercase font-semibold hover:cursor-pointer hover:opacity-95"
         >
           Delete Task
         </button>

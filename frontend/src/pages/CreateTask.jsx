@@ -29,25 +29,25 @@ console.log(priority);
   }
 
   return (
-    <div className="flex flex-col items-center gap-10 p-5 justify-evenly bg-stone-200">
+    <div className="flex flex-col items-center p-5 justify-evenly bg-stone-200 h-screen">
       <h1 className="text-3xl font-bold uppercase">Create A Task</h1>
       <form
         onSubmit={handleOnSubmit}
-        className="flex flex-col gap-5 bg-slate-300 p-5 mx-auto w-full sm:max-w-lg rounded-lg"
+        className="flex flex-col gap-5 bg-white p-5 mx-auto w-full sm:max-w-lg rounded-lg"
       >
         <p className="text-xl font-semibold">Title</p>
         <input
           onChange={(e) => setTitle(e.target.value)}
           type="text"
           value={title}
-          className="p-3 bg-slate-200 rounded-lg outline-none border-2 border-slate-300"
+          className="p-3  rounded-lg outline-none border-2 border-slate-300"
           placeholder="Title For Your Task"
         />
         <p className="text-xl font-semibold">Description</p>
         <textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          className="p-3 bg-slate-200 rounded-lg outline-none border-2 border-slate-300"
+          className="p-3  rounded-lg outline-none border-2 border-slate-300"
           placeholder="Description For You Task"
         ></textarea>
         <div className="flex gap-2 items-center ">
@@ -59,7 +59,7 @@ console.log(priority);
           />
           <p>Mark As Important</p>
         </div>
-        <button className="p-3 bg-green-400 rounded-lg uppercase font-semibold">
+        <button className="p-3 bg-green-400 rounded-lg uppercase text-white font-semibold hover:opacity-90 hover:cursor-pointer">
           Create Task
         </button>
       </form>

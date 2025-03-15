@@ -28,8 +28,8 @@ export default function CompletedTask() {
   }
 
   return (
-    <div className="flex flex-col gap-5 bg-blue-400 p-3">
-      <h1 className="text-3xl font-semibold text-center p-3">All Your Completed Tasks</h1>
+    <div className="flex flex-col gap-5 bg-stone-200 p-3 h-screen">
+      <h1 className="text-4xl font-bold uppercase text-center p-3">All Your Completed Tasks</h1>
       <div className="flex flex-wrap gap-6 justify-center p-3">
         {task.map(
           (t, i) =>
