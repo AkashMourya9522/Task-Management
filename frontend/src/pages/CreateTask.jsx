@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -9,6 +10,9 @@ export default function CreateTask() {
   const [priority, setPriority] = useState(false);
   const [completeBy, setCompleteBy] = useState("");
   const navigate = useNavigate();
+  const {email} = useSelector((state)=>state.user.user)
+  console.log(email);
+  
   console.log(priority);
 
   async function handleOnSubmit(e) {
@@ -16,14 +20,18 @@ export default function CreateTask() {
     try {
       const dbRes = await axios.post(
         `/api/task/create`,
-        { title, description, priority, completeBy },
+        { title, description, priority, completeBy, userMail:email  },
         {
           withCredentials: true,
         }
       );
+      console.log(dbRes.data);
+      
       toast.success("Task Created Successfully");
       navigate("/home");
     } catch (error) {
+      console.log(error);
+      
       toast.error(error.response.data.messsage);
       console.log(error.response.data.messsage);
     }

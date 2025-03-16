@@ -20,6 +20,10 @@ const taskSchema = mongoose.Schema({
     completeBy:{
         type:Date
     },
+    userMail:{
+        type:String,
+        required:true
+    },
     userRef:{
         type:String,
         required:true

@@ -19,11 +19,12 @@ function App() {
           <Route path="/task/:id" element={<EditTask />} />
           <Route path="/completed-task" element={<CompletedTask />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/create-task" element={<CreateTask />} />
         </Route>
 
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
-        <Route path="/create-task" element={<CreateTask />} />
+        
       </Routes>
     </BrowserRouter>
   );

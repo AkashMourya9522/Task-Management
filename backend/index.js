@@ -6,6 +6,7 @@ import listingRoute from './routes/task.route.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import userRoute from './routes/user.route.js'
+import job from './job.js'
 
 const app = express()
 dotenv.config()

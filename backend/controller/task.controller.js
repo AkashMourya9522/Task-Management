@@ -1,10 +1,18 @@
 import Task from "../models/task.model.js";
 
 export const createTask = async (req, res) => {
-  const { title, description, priority, completeBy } = req.body;
+  const { title, description, priority, completeBy, userMail } = req.body;
   const userId = req.userId;
+  const saveData = {}
+  if(title) saveData.title = title
+  if(description) saveData.description = description
+  if(priority) saveData.priority = priority
+  if(completeBy) saveData.completeBy = completeBy
+  if(userMail) saveData.userMail = userMail
+  if(userId) saveData.userRef = userId
+
   try {
-    const newTask = new Task({ title, description, priority, completeBy, userRef: userId });
+    const newTask = new Task(saveData);
     const dbRes = await newTask.save();
     res.status(200).json(dbRes);
   } catch (error) {
