@@ -17,6 +17,9 @@ const taskSchema = mongoose.Schema({
         type:Boolean,
         default:false
     },
+    completeBy:{
+        type:Date
+    },
     userRef:{
         type:String,
         required:true

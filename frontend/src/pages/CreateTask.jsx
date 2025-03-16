@@ -7,15 +7,16 @@ export default function CreateTask() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState(false);
+  const [completeBy, setCompleteBy] = useState("");
   const navigate = useNavigate();
-console.log(priority);
+  console.log(priority);
 
   async function handleOnSubmit(e) {
     e.preventDefault();
     try {
       const dbRes = await axios.post(
         `/api/task/create`,
-        { title, description,priority },
+        { title, description, priority, completeBy },
         {
           withCredentials: true,
         }
@@ -50,6 +51,16 @@ console.log(priority);
           className="p-3  rounded-lg outline-none border-2 border-slate-300"
           placeholder="Description For You Task"
         ></textarea>
+        <p className="text-xl font-bold">Due Date</p>
+        <input
+          min={new Date().toISOString().split("T")[0]}
+          onChange={(e) => {
+            setCompleteBy(e.target.value);
+          }}
+          type="date"
+          name=""
+          id=""
+        />
         <div className="flex gap-2 items-center ">
           <input
             checked={priority}

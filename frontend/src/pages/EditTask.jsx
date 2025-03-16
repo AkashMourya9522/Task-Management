@@ -9,6 +9,8 @@ export default function EditTask() {
   const [description, setDescription] = useState("");
   const [completed, setCompleted] = useState(false);
   const [priority, setPriority] = useState(false);
+  const [completeBy, setCompleteBy] = useState("");
+    
 
   const navigate = useNavigate();
   async function getTaskData() {
@@ -21,6 +23,7 @@ export default function EditTask() {
     setDescription(dbRes.data.description);
     setCompleted(dbRes.data.completed);
     setPriority(dbRes.data.priority);
+    setCompleteBy(new Date(dbRes.data.completeBy).toISOString().split('T')[0])
   }
   useEffect(() => {
     getTaskData();
@@ -31,7 +34,7 @@ export default function EditTask() {
     try {
       const dbRes = await axios.put(
         `/api/task/update/${id}`,
-        { title, description, completed, priority },
+        { title, description, completed, priority, completeBy },
         {
           withCredentials: true,
         }
@@ -88,6 +91,17 @@ export default function EditTask() {
           />
           <p className="text-md font-bold">Mark As Completed</p>
         </div>
+        <p className="text-xl font-bold">Due Date</p>
+        <input
+        value={completeBy}
+          min={new Date().toISOString().split("T")[0]}
+          onChange={(e) => {
+            setCompleteBy(e.target.value);
+          }}
+          type="date"
+          name=""
+          id=""
+        />
         <div className="flex  gap-2 items-center">
           <input
             checked={priority}
