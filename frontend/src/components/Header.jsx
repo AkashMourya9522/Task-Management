@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { signOut } from "../redux/user/userSlice";
 import { toast } from "react-toastify";
-import { Menu, X } from "lucide-react"; // Icons for hamburger menu
+import { Menu, X } from "lucide-react"; 
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -26,10 +26,7 @@ export default function Header() {
   return (
     <div className="bg-white shadow-md p-4">
       <div className="flex justify-between items-center">
-        {/* Logo / Title */}
         <h1 className="text-xl font-bold text-gray-700">Task Manager</h1>
-
-        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
           {!user ? (
             <>
@@ -54,20 +51,16 @@ export default function Header() {
               <Link className="text-lg font-semibold text-slate-500" to="/profile">
                 Profile
               </Link>
-              <button onClick={handleSignOut} className="text-lg font-semibold text-red-500">
+              <button onClick={handleSignOut} className="text-lg font-semibold text-red-500 cursor-pointer">
                 Sign Out
               </button>
             </>
           )}
         </div>
-
-        {/* Mobile Menu Button */}
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-gray-700">
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
-
-      {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden flex flex-col mt-4 space-y-4 bg-white p-4 rounded-lg shadow-lg">
           {!user ? (

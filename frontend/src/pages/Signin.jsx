@@ -60,7 +60,7 @@ export default function Signin() {
           </button>
         </form>
         <Link
-          className="hover:underline text-green-400 font-semibold "
+          className="hover:border-b-2 text-green-400 font-semibold "
           to={"/sign-up"}
         >
           Don't Have An Account?

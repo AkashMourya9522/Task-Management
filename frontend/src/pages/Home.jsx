@@ -41,7 +41,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-5 bg-stone-200 p-3 h-screen">
+    <div className="flex flex-col items-center gap-5 bg-stone-200 p-3 ">
       <h1 className="text-3xl font-semibold text-center p-3"></h1>
       <h1 className="text-4xl font-bold text-center p-3 uppercase">
         Welcome <span className="text-green-400">{user.username}</span> Your

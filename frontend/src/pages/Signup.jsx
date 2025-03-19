@@ -75,7 +75,7 @@ export default function Signup() {
           </button>
         </form>
         <Link
-          className="my-5 hover:underline text-green-400 font-semibold"
+          className="my-5 hover:border-b-2 text-green-400 font-semibold"
           to={'/sign-in'}
         >
           Already Have An Account?

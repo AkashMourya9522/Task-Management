@@ -38,7 +38,7 @@ export default function CreateTask() {
   }
 
   return (
-    <div className="flex flex-col items-center p-5 justify-evenly bg-stone-200 h-screen">
+    <div className="flex flex-col items-center p-5 justify-evenly bg-stone-200 ">
       <h1 className="text-3xl font-bold uppercase">Create A Task</h1>
       <form
         onSubmit={handleOnSubmit}

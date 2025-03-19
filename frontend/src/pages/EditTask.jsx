@@ -23,7 +23,8 @@ export default function EditTask() {
     setDescription(dbRes.data.description);
     setCompleted(dbRes.data.completed);
     setPriority(dbRes.data.priority);
-    setCompleteBy(new Date(dbRes.data.completeBy).toISOString().split('T')[0])
+    if(dbRes.data.completeBy) {setCompleteBy(new Date(dbRes.data.completeBy).toISOString().split('T')[0])}
+
   }
   useEffect(() => {
     getTaskData();
@@ -63,7 +64,7 @@ export default function EditTask() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-evenly p-5 bg-stone-200 h-screen">
+    <div className="flex flex-col items-center justify-evenly p-5 bg-stone-200 ">
       <h1 className="text-4xl font-bold uppercase">Edit Task</h1>
       <form
         onSubmit={handleOnSubmit}

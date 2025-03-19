@@ -28,7 +28,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="bg-stone-200 h-screen p-5 ">
+    <div className="bg-stone-200  p-5 ">
       <form
         onSubmit={handleSubmitChanges}
         className="bg-white p-5 flex flex-col gap-5 rounded-lg max-w-lg mx-auto my-10"

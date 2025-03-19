@@ -3,13 +3,13 @@ import Task from "../models/task.model.js";
 export const createTask = async (req, res) => {
   const { title, description, priority, completeBy, userMail } = req.body;
   const userId = req.userId;
-  const saveData = {}
-  if(title) saveData.title = title
-  if(description) saveData.description = description
-  if(priority) saveData.priority = priority
-  if(completeBy) saveData.completeBy = completeBy
-  if(userMail) saveData.userMail = userMail
-  if(userId) saveData.userRef = userId
+  const saveData = {};
+  if (title) saveData.title = title;
+  if (description) saveData.description = description;
+  if (priority) saveData.priority = priority;
+  if (completeBy) saveData.completeBy = completeBy;
+  if (userMail) saveData.userMail = userMail;
+  if (userId) saveData.userRef = userId;
 
   try {
     const newTask = new Task(saveData);
@@ -71,7 +71,8 @@ export const updateTask = async (req, res) => {
     } else {
       const userId = task.userRef;
       if (userId == req.userId) {
-        const { title, description, completed, priority, completeBy } = req.body;
+        const { title, description, completed, priority, completeBy } =
+          req.body;
         const dbRes = await Task.findByIdAndUpdate(
           taskId,
           { title, description, completed, priority, completeBy },
@@ -94,23 +95,26 @@ export const updateTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
   const userId = req.userId;
-  let filter = (req.query.filter) || 'priority';
-  let order = (req.query.order) || true;
-  let completed = req.query.completed || true
-  
-  console.log(filter,order);
-  if(filter=='priority'){
+  let filter = req.query.filter;
+  let order = req.query.order;
+  let completed = req.query.completed;
+
+  console.log(filter, order);
+  if (filter == "priority") {
     order = -1;
   }
-  
+
   try {
-    const tasks = await Task.find({ userRef: userId, completed:completed }).sort({[filter]:order}) ;
+    const tasks = await Task.find({
+      userRef: userId,
+      completed: completed,
+    }).sort({ [filter]: order });
     console.log(tasks);
-    
+
     return res.status(200).json(tasks);
   } catch (error) {
     console.log(error);
-    
+
     return res.status(404).json({
       msg: error,
       success: false,
@@ -129,6 +133,21 @@ export const getTask = async (req, res) => {
   try {
     const task = await Task.findById(taskId);
     if (task.userRef != req.userId) {
+      return res.status(404).json({
+        msg: "UnAuthorized",
+        success: false,
+      });
+    } else {
+      return res.status(200).json(task);
+    }
+  } catch (error) {}
+};
+
+export const getCompletedTasks = async (req, res) => {
+  const userId = req.params.id
+  try {
+    const task = await Task.find({completed:true,userRef:req.userId});
+    if (userId != req.userId) {
       return res.status(404).json({
         msg: "UnAuthorized",
         success: false,
