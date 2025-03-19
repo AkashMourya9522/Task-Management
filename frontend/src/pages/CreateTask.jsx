@@ -38,11 +38,11 @@ export default function CreateTask() {
   }
 
   return (
-    <div className="flex flex-col items-center p-5 justify-evenly bg-stone-200 ">
-      <h1 className="text-3xl font-bold uppercase">Create A Task</h1>
+    <div className="p-5">
+      <h1 className="text-3xl font-bold uppercase text-center p-5">Create A Task</h1>
       <form
         onSubmit={handleOnSubmit}
-        className="flex flex-col gap-5 bg-white p-5 mx-auto w-full sm:max-w-lg rounded-lg"
+        className="flex flex-col gap-5 bg-white p-5 mx-auto max-w-lg rounded-lg"
       >
         <p className="text-xl font-semibold">Title</p>
         <input

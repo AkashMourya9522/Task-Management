@@ -30,14 +30,13 @@ export default function Signup() {
   }
 
   return (
-    <div className="bg-slate-200 p-5 flex items-center justify-center">
-      <div className="sm:max-w-lg  w-full">
-        <h1 className="text-3xl font-bold text-center uppercase my-5">
+    <div className="p-5">
+        <h1 className="text-3xl font-bold text-center uppercase p-5">
           Sign Up
         </h1>
         <form
           onSubmit={handleFormSubmit}
-          className="flex flex-col gap-5 w-full mb-5"
+          className="flex flex-col gap-5 max-w-lg mx-auto p-5"
         >
           <p className="font-semibold text-lg">Username</p>
           <input
@@ -73,15 +72,16 @@ export default function Signup() {
           >
             Sign Up
           </button>
-        </form>
-        <Link
-          className="my-5 hover:border-b-2 text-green-400 font-semibold"
+          <Link
+          className="my-5 hover:border-b-2 text-green-400 font-semibold "
           to={'/sign-in'}
         >
           Already Have An Account?
         </Link>
+        </form>
+        
         {error && <p className="text-red-400 mt-3">{error}</p>}
-      </div>
+      
     </div>
   );
 }

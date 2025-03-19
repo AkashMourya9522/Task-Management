@@ -30,25 +30,25 @@ export default function Header() {
         <div className="hidden md:flex space-x-6">
           {!user ? (
             <>
-              <Link className="text-lg font-semibold text-slate-500" to="/sign-up">
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400" to="/sign-up">
                 Sign Up
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/sign-in">
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400" to="/sign-in">
                 Sign In
               </Link>
             </>
           ) : (
             <>
-              <Link className="text-lg font-semibold text-slate-500" to="/home">
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400" to="/home">
                 Home
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/create-task">
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400" to="/create-task">
                 Create Task
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/completed-task">
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400" to="/completed-task">
                 Completed Tasks
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/profile">
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400" to="/profile">
                 Profile
               </Link>
               <button onClick={handleSignOut} className="text-lg font-semibold text-red-500 cursor-pointer">
@@ -65,25 +65,25 @@ export default function Header() {
         <div className="md:hidden flex flex-col mt-4 space-y-4 bg-white p-4 rounded-lg shadow-lg">
           {!user ? (
             <>
-              <Link className="text-lg font-semibold text-slate-500" to="/sign-up" onClick={() => setMenuOpen(false)}>
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/sign-up " onClick={() => setMenuOpen(false)}>
                 Sign Up
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/sign-in" onClick={() => setMenuOpen(false)}>
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/sign-in" onClick={() => setMenuOpen(false)}>
                 Sign In
               </Link>
             </>
           ) : (
             <>
-              <Link className="text-lg font-semibold text-slate-500" to="/home" onClick={() => setMenuOpen(false)}>
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/home" onClick={() => setMenuOpen(false)}>
                 Home
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/create-task" onClick={() => setMenuOpen(false)}>
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/create-task" onClick={() => setMenuOpen(false)}>
                 Create Task
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/completed-task" onClick={() => setMenuOpen(false)}>
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/completed-task" onClick={() => setMenuOpen(false)}>
                 Completed Tasks
               </Link>
-              <Link className="text-lg font-semibold text-slate-500" to="/profile" onClick={() => setMenuOpen(false)}>
+              <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/profile" onClick={() => setMenuOpen(false)}>
                 Profile
               </Link>
               <button onClick={handleSignOut} className="text-lg font-semibold text-red-500">
