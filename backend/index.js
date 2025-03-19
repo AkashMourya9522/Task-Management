@@ -40,7 +40,7 @@ app.use("/api/user",userRoute)
 app.use(express.static(path.join(__dirname,'/frontend/dist')))
 
 app.get("*",(req,res)=>{
-    req.sendFile(path.join(__dirname,'frontend','dist','index.html'))
+    res.sendFile(path.join(__dirname,'frontend','dist','index.html'))
 })
 
 app.get("/test",(req,res)=>{
