@@ -10,7 +10,6 @@ export default function Profile() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.email);
   const dispatch = useDispatch();
-  console.log(username, email, password);
 
   async function handleSubmitChanges(e) {
     e.preventDefault();
@@ -28,14 +27,12 @@ export default function Profile() {
   }
 
   return (
-    <div className="bg-stone-200  p-5 ">
+    <div className="p-5">
+      <h1 className="text-3xl font-bold text-center p-3 uppercase">Profile</h1>
       <form
         onSubmit={handleSubmitChanges}
-        className="bg-white p-5 flex flex-col gap-5 rounded-lg max-w-lg mx-auto my-10"
+        className="bg-white p-5 flex flex-col gap-5 rounded-lg max-w-lg mx-auto my-10 border-2 border-slate-200"
       >
-        <h1 className="text-3xl font-bold p-3">
-          Welcome <span className="text-green-400">{username}</span>
-        </h1>
         <p className="text-lg font-semibold">Username</p>
         <input
           type="text"

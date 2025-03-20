@@ -86,7 +86,7 @@ export default function Header() {
               <Link className="text-lg font-semibold text-slate-500 hover:text-green-400 w-fit" to="/profile" onClick={() => setMenuOpen(false)}>
                 Profile
               </Link>
-              <button onClick={handleSignOut} className="text-lg font-semibold text-red-500">
+              <button onClick={handleSignOut} className="text-lg font-semibold text-red-500 cursor-pointer">
                 Sign Out
               </button>
             </>

@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 export const getUser = async (req, res) => {
   const userId = req.userId;
   const paramsId = req.params.id;
-  console.log(userId,paramsId);
   
   if (userId != paramsId) {
     return res.status(404).json({

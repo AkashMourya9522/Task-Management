@@ -28,7 +28,7 @@ async function executeTask() {
         transporter.sendMail({
           to: dueTasks[i].userMail,
           subject: `${dueTasks[i].title}`,
-          html: `Your Task ${dueTasks[i].title} is due tomorrow! Make Sure To Finish It!`,
+          html: `<h1>Your Task ${dueTasks[i].title} is due tomorrow!</h1> <h3>Make Sure To Finish It!</h3>`,
         });
       }
     }

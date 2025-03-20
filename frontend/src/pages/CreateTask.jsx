@@ -11,9 +11,6 @@ export default function CreateTask() {
   const [completeBy, setCompleteBy] = useState("");
   const navigate = useNavigate();
   const {email} = useSelector((state)=>state.user.user)
-  console.log(email);
-  
-  console.log(priority);
 
   async function handleOnSubmit(e) {
     e.preventDefault();
@@ -25,24 +22,21 @@ export default function CreateTask() {
           withCredentials: true,
         }
       );
-      console.log(dbRes.data);
       
       toast.success("Task Created Successfully");
       navigate("/home");
     } catch (error) {
       console.log(error);
-      
       toast.error(error.response.data.messsage);
-      console.log(error.response.data.messsage);
     }
   }
 
   return (
     <div className="p-5">
-      <h1 className="text-3xl font-bold uppercase text-center p-5">Create A Task</h1>
+      <h1 className="text-3xl font-bold uppercase text-center p-5 mb-10">Create A Task</h1>
       <form
         onSubmit={handleOnSubmit}
-        className="flex flex-col gap-5 bg-white p-5 mx-auto max-w-lg rounded-lg"
+        className="flex flex-col gap-5 mx-auto max-w-lg rounded-lg border-2 border-slate-200 p-5"
       >
         <p className="text-xl font-semibold">Title</p>
         <input

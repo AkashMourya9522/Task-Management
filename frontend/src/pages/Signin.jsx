@@ -14,16 +14,20 @@ export default function Signin() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    try {
-      const dbRes = await axios.post("/api/auth/signin", {
-        password,
-        email,
-      });
-      dispatch(signIn(dbRes.data));
-      navigate("/home");
-    } catch (error) {
-      toast.error(error.response.data.message);
-      setError(error.response.data.message);
+    if (!password || !email) {
+      toast.error("Fill In The Details!");
+    } else {
+      try {
+        const dbRes = await axios.post("/api/auth/signin", {
+          password,
+          email,
+        });
+        dispatch(signIn(dbRes.data));
+        navigate("/home");
+      } catch (error) {
+        toast.error(error.response.data.message);
+        setError(error.response.data.message);
+      }
     }
   }
 

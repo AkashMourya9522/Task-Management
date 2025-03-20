@@ -99,7 +99,6 @@ export const getTasks = async (req, res) => {
   let order = req.query.order;
   let completed = req.query.completed;
 
-  console.log(filter, order);
   if (filter == "priority") {
     order = -1;
   }
@@ -109,7 +108,6 @@ export const getTasks = async (req, res) => {
       userRef: userId,
       completed: completed,
     }).sort({ [filter]: order });
-    console.log(tasks);
 
     return res.status(200).json(tasks);
   } catch (error) {

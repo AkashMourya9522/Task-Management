@@ -17,14 +17,11 @@ export default function EditTask() {
     const dbRes = await axios.get("/api/task/getTask/" + id, {
       withCredentials: true,
     });
-    console.log(dbRes);
-
     setTitle(dbRes.data.title);
     setDescription(dbRes.data.description);
     setCompleted(dbRes.data.completed);
     setPriority(dbRes.data.priority);
     if(dbRes.data.completeBy) {setCompleteBy(new Date(dbRes.data.completeBy).toISOString().split('T')[0])}
-
   }
   useEffect(() => {
     getTaskData();
@@ -64,11 +61,11 @@ export default function EditTask() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-evenly p-5 bg-stone-200 ">
-      <h1 className="text-4xl font-bold uppercase">Edit Task</h1>
+    <div className="p-10">
+      <h1 className="text-4xl font-bold uppercase text-center mb-10">Edit Task</h1>
       <form
         onSubmit={handleOnSubmit}
-        className="flex flex-col gap-5 bg-white p-5 mx-auto w-full sm:max-w-lg rounded-lg"
+        className="flex flex-col gap-5 p-5 mx-auto sm:max-w-lg rounded-lg border-2 border-slate-200"
       >
         <p className="text-xl font-bold">Title</p>
         <input

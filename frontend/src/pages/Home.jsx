@@ -12,20 +12,18 @@ export default function Home() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
 
-  console.log(task);
-
   async function getData() {
-      try {
-        const dbRes = await axios.get(
-          `/api/task/getTasks?filter=${filter}&order=${order}&completed=false`,
-          {
-            withCredentials: true,
-          }
-        );
-        setTask(dbRes.data);
-      } catch (error) {
-        toast.error(error.message);
-      }
+    try {
+      const dbRes = await axios.get(
+        `/api/task/getTasks?filter=${filter}&order=${order}&completed=false`,
+        {
+          withCredentials: true,
+        }
+      );
+      setTask(dbRes.data);
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
   useEffect(() => {
     getData();
@@ -41,11 +39,10 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-5 bg-stone-200 p-3 ">
+    <div className="flex flex-col items-center gap-5  p-3 ">
       <h1 className="text-3xl font-semibold text-center p-3"></h1>
       <h1 className="text-4xl font-bold text-center p-3 uppercase">
-        Welcome <span className="text-green-400">{user.username}</span> Your
-        Tasks
+        Welcome <span className="text-green-400">{user.username}</span>
       </h1>
       <select
         onChange={handleFilter}

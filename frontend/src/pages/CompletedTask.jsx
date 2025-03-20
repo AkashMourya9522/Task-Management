@@ -29,7 +29,7 @@ export default function CompletedTask() {
   }
 
   return (
-    <div className="flex flex-col gap-5 bg-stone-200 p-3 ">
+    <div className="flex flex-col gap-5  p-3 ">
       <h1 className="text-4xl font-bold uppercase text-center p-3">All Your Completed Tasks</h1>
       <div className="flex flex-wrap gap-6 justify-center p-3">
         {task.length == 0 && <h1 className="text-red-500 font-bold text-xl">You Have No Completed Tasks!</h1> }
