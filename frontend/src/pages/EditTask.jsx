@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { motion } from "motion/react";
 
 export default function EditTask() {
   const { id } = useParams();
@@ -61,7 +62,13 @@ export default function EditTask() {
   }
 
   return (
-    <div className="p-10">
+    <motion.div initial={{
+      opacity: 0,
+    }}
+    animate={{
+      opacity: 1,
+    }}
+     className="p-10">
       <h1 className="text-4xl font-bold uppercase text-center mb-10">Edit Task</h1>
       <form
         onSubmit={handleOnSubmit}
@@ -118,6 +125,6 @@ export default function EditTask() {
           Delete Task
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 }

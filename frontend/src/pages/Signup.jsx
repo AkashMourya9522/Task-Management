@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { motion } from "motion/react";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -34,7 +35,14 @@ export default function Signup() {
   }
 
   return (
-    <div className="p-5">
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+    >
       <h1 className="text-3xl font-bold text-center uppercase p-5">Sign Up</h1>
       <form
         onSubmit={handleFormSubmit}
@@ -70,7 +78,7 @@ export default function Signup() {
         />
         <button
           type="submit"
-          className="p-3 bg-green-400 rounded-lg text-white font-semibold uppercase text-lg"
+          className="p-3 bg-green-400 rounded-lg text-white font-semibold uppercase text-lg hover:opacity-95 hover:cursor-pointer"
         >
           Sign Up
         </button>
@@ -83,6 +91,6 @@ export default function Signup() {
       </form>
 
       {error && <p className="text-red-400 mt-3">{error}</p>}
-    </div>
+    </motion.div>
   );
 }

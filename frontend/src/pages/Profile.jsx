@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { updateUser } from "../redux/user/userSlice";
+import { motion } from "motion/react";
 
 export default function Profile() {
   const user = useSelector((state) => state.user.user);
@@ -27,7 +28,13 @@ export default function Profile() {
   }
 
   return (
-    <div className="p-5">
+    <motion.div initial={{
+      opacity: 0,
+    }}
+    animate={{
+      opacity: 1,
+    }}
+     className="p-5">
       <h1 className="text-3xl font-bold text-center p-3 uppercase">Profile</h1>
       <form
         onSubmit={handleSubmitChanges}
@@ -58,6 +65,6 @@ export default function Profile() {
           Submit Changes
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 }

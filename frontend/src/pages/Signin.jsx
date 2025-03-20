@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { signIn } from "../redux/user/userSlice";
+import { motion } from "motion/react";
 
 export default function Signin() {
   const [password, setPassword] = useState("");
@@ -32,7 +33,15 @@ export default function Signin() {
   }
 
   return (
-    <div className="p-5">
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      className="p-5"
+    >
       <h1 className="text-3xl font-bold text-center uppercase p-5">Sign In</h1>
       <form
         onSubmit={handleFormSubmit}
@@ -58,7 +67,7 @@ export default function Signin() {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <button className="p-3 bg-green-400 rounded-lg text-white font-semibold uppercase text-lg">
+        <button className="p-3 bg-green-400 rounded-lg text-white font-semibold uppercase text-lg hover:cursor-pointer hover:opacity-95">
           Sign In
         </button>
         <Link
@@ -69,6 +78,6 @@ export default function Signin() {
         </Link>
         {error && <p className="text-red-500 "> {error} </p>}
       </form>
-    </div>
+    </motion.div>
   );
 }

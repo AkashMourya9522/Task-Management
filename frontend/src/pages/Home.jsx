@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Task from "../components/Task";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { motion } from "motion/react";
 
 export default function Home() {
   const [task, setTask] = useState([]);
@@ -39,14 +40,20 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-5  p-3 ">
+    <motion.div initial={{
+      opacity: 0,
+    }}
+    animate={{
+      opacity: 1,
+    }}
+     className="flex flex-col items-center gap-5  p-3 ">
       <h1 className="text-3xl font-semibold text-center p-3"></h1>
       <h1 className="text-4xl font-bold text-center p-3 uppercase">
         Welcome <span className="text-green-400">{user.username}</span>
       </h1>
       <select
         onChange={handleFilter}
-        className="max-w-lg outline-none bg-white p-3 rounded-lg"
+        className="max-w-lg outline-none bg-white p-3 rounded-lg border-2 border-slate-200"
         value={`${filter}_${order}`}
       >
         <option value="createdAt_asc">Oldest</option>
@@ -65,6 +72,6 @@ export default function Home() {
           )}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

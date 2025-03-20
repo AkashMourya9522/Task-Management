@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { motion } from "motion/react";
 
 export default function CreateTask() {
   const [title, setTitle] = useState("");
@@ -32,8 +33,14 @@ export default function CreateTask() {
   }
 
   return (
-    <div className="p-5">
-      <h1 className="text-3xl font-bold uppercase text-center p-5 mb-10">Create A Task</h1>
+    <motion.div initial={{
+      opacity: 0,
+    }}
+    animate={{
+      opacity: 1,
+    }}
+     className="p-5">
+      <h1 className="text-3xl font-bold uppercase text-center p-5 mb-5">Create A Task</h1>
       <form
         onSubmit={handleOnSubmit}
         className="flex flex-col gap-5 mx-auto max-w-lg rounded-lg border-2 border-slate-200 p-5"
@@ -55,13 +62,12 @@ export default function CreateTask() {
         ></textarea>
         <p className="text-xl font-bold">Due Date</p>
         <input
+        className="border-2 border-slate-200 rounded-lg p-3"
           min={new Date().toISOString().split("T")[0]}
           onChange={(e) => {
             setCompleteBy(e.target.value);
           }}
           type="date"
-          name=""
-          id=""
         />
         <div className="flex gap-2 items-center ">
           <input
@@ -76,6 +82,6 @@ export default function CreateTask() {
           Create Task
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 }
